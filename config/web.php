@@ -15,9 +15,12 @@ $config = [
         '@npm'   => '@vendor/npm-asset',
     ],
     'components' => [
-        'request' => [
+        'request' => [            
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => '6Pd0/wW+W4UgYlKyXeDEDsS/edhis80bOhmtz0fSTYmzTH7koOdADZ54mITEgmCq',
+            'parsers' => [
+                'application/json' => 'yii\web\JsonParser',
+            ],
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
@@ -46,12 +49,38 @@ $config = [
         ],
         'db' => $db,
         'urlManager' => [
-            'enablePrettyUrl'   => true,
-            'showScriptName'    => false,
+            'enablePrettyUrl'       => true,
+            'showScriptName'        => false,
             'rules' => [
                 '<controller:\w+>/<id:\d+>'                 => '<controller>/view',
                 '<controller:\w+>/<action:\w+>/<id:\d+>'    => '<controller>/<action>',
                 '<controller:\w+>/<action:\w+>'             => '<controller>/<action>',
+                // The above configuration mainly adds a URL rule for the controllers
+                // so that data can be accessed and manipulated with friendly URLs and
+                // meaningful HTTP verbs.
+                ['class' => 'yii\rest\UrlRule', 'controller' => 'comentario-dislike-rest'],
+                ['class' => 'yii\rest\UrlRule', 'controller' => 'comentario-like-rest'],
+                ['class' => 'yii\rest\UrlRule', 'controller' => 'comentario-rest'],
+
+                ['class' => 'yii\rest\UrlRule', 'controller' => 'etiqueta-rest'],
+
+                ['class' => 'yii\rest\UrlRule', 'controller' => 'insignia-rest'],
+                ['class' => 'yii\rest\UrlRule', 'controller' => 'insignia-tipo-rest'],
+
+                ['class' => 'yii\rest\UrlRule', 'controller' => 'lugar-rest'],
+                ['class' => 'yii\rest\UrlRule', 'controller' => 'lugar-tipo-rest'],
+
+                ['class' => 'yii\rest\UrlRule', 'controller' => 'publicacion-dislike-rest'],
+                ['class' => 'yii\rest\UrlRule', 'controller' => 'publicacion-etiqueta-rest'],
+                ['class' => 'yii\rest\UrlRule', 'controller' => 'publicacion-fichero-rest'],
+                ['class' => 'yii\rest\UrlRule', 'controller' => 'publicacion-like-rest'],
+                ['class' => 'yii\rest\UrlRule', 'controller' => 'publicacion-visita-rest'],
+                ['class' => 'yii\rest\UrlRule', 'controller' => 'publicacion-rest'],
+
+                ['class' => 'yii\rest\UrlRule', 'controller' => 'ubicacion-rest'],
+
+                ['class' => 'yii\rest\UrlRule', 'controller' => 'usuario-insignia-rest'],
+                ['class' => 'yii\rest\UrlRule', 'controller' => 'usuario-rest'],
             ],
         ],
     ],
