@@ -114,7 +114,6 @@ class m240304_002251_migration1 extends Migration
         // TABLA DE PUBLICACION VISITA
         $this->createTable('publicacion_visita', [
             'puv_id' => $this->primaryKey(),            
-            'puv_contenido' => $this->text()->notNull(),
             'puv_createdusuario' => $this->string()->notNull(),
             'puv_createdfecha' => $this->timestamp()->defaultExpression('CURRENT_TIMESTAMP'),
             'puv_fkusuario' => $this->integer()->notNull(),

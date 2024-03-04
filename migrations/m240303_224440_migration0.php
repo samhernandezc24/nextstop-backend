@@ -27,7 +27,7 @@ class m240303_224440_migration0 extends Migration
         // TABLA DE LUGAR TIPO
         $this->createTable('lugar_tipo', [
             'lut_id' => $this->primaryKey(),            
-            'lut_nombre' => $this->string()->notNull(),
+            'lut_nombre' => $this->string()->notNull()->unique(),
             'lut_icono' => $this->string(25)->notNull(),
             'lut_deleted' => $this->boolean()->defaultValue(false),
         ]);
@@ -75,7 +75,7 @@ class m240303_224440_migration0 extends Migration
         // TABLA DE LUGAR
         $this->createTable('lugar', [
             'lug_id' => $this->primaryKey(),            
-            'lug_nombre' => $this->string()->notNull(),
+            'lug_nombre' => $this->string()->notNull()->unique(),
             'lug_descripcion' => $this->text()->null(),
             'lug_createdfecha' => $this->timestamp()->defaultExpression('CURRENT_TIMESTAMP'),
             'lug_updatedfecha' => $this->timestamp()->defaultExpression('CURRENT_TIMESTAMP')->append('ON UPDATE CURRENT_TIMESTAMP'),
