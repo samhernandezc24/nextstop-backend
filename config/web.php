@@ -4,7 +4,7 @@ $params = require __DIR__ . '/params.php';
 $db = require __DIR__ . '/db.php';
 
 $config = [
-    'id' => 'nextstop',
+    'id' => 'nextstop-backend',
     'basePath' => dirname(__DIR__),
     'language' => 'es-ES',
     'timezone' => 'America/Mexico_City',
