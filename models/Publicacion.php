@@ -74,6 +74,18 @@ class Publicacion extends \yii\db\ActiveRecord
     }
 
     /**
+     * {@inheritdoc}
+     */
+    public function extraFields()
+    {
+        return [
+            'usuario' => function($item) {
+                return $item->usuario;
+            },
+        ];
+    }
+
+    /**
      * Gets query for [[Comentarios]].
      *
      * @return \yii\db\ActiveQuery
@@ -151,5 +163,15 @@ class Publicacion extends \yii\db\ActiveRecord
     public function getPublicacionVisitas()
     {
         return $this->hasMany(PublicacionVisita::class, ['puv_fkpublicacion' => 'pub_id']);
+    }
+
+    /**
+     * Obtiene el nombre completo del usuario asociado a esta publicación.
+     * 
+     * @return string
+     */
+    public function getUsuario() 
+    {
+        return $this->pubFkusuario->usu_nombre . ' ' . $this->pubFkusuario->usu_apellido;
     }
 }
